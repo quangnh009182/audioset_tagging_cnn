@@ -1,5 +1,8 @@
-matplotlib==3.0.3
-soundfile==0.10.3.post1
-librosa==0.6.3
-torch==1.0.1.post2
-torchlibrosa==0.0.4
+matplotlib
+soundfile
+librosa
+torchlibrosa
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.9.0+cu111
+torchvision==0.10.0+cu111
+torchaudio===0.9.1
