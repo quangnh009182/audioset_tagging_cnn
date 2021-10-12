@@ -12,7 +12,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.utils.data
  
-from utilities import (create_folder, get_filename, create_logging, Mixup, 
+from utils.utilities import (create_folder, get_filename, create_logging, Mixup, 
     StatisticsContainer)
 from models import (Cnn14, Cnn14_no_specaug, Cnn14_no_dropout, 
     Cnn6, Cnn10, ResNet22, ResNet38, ResNet54, Cnn14_emb512, Cnn14_emb128, 
@@ -22,10 +22,10 @@ from models import (Cnn14, Cnn14_no_specaug, Cnn14_no_dropout,
     Cnn14_mixup_time_domain, Cnn14_DecisionLevelMax, Cnn14_DecisionLevelAtt)
 from pytorch_utils import (move_data_to_device, count_parameters, count_flops, 
     do_mixup)
-from data_generator import (AudioSetDataset, TrainSampler, BalancedTrainSampler, 
+from utils.data_generator import (AudioSetDataset, TrainSampler, BalancedTrainSampler, 
     AlternateTrainSampler, EvaluateSampler, collate_fn)
 from evaluate import Evaluator
-import config
+import utils.config as config
 from losses import get_loss_func
 
 

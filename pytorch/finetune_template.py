@@ -17,9 +17,9 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.utils.data
  
-from utilities import get_filename
+from utils.utilities import get_filename
 from models import *
-import config
+import utils.config as config
 
 
 class Transfer_Cnn14(nn.Module):

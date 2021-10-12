@@ -7,10 +7,10 @@ import librosa
 import matplotlib.pyplot as plt
 import torch
 
-from utilities import create_folder, get_filename
+from utils.utilities import create_folder, get_filename
 from models import *
 from pytorch_utils import move_data_to_device
-import config
+import utils.config as config
 
 
 def audio_tagging(args):
