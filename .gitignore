@@ -7,4 +7,13 @@
 __pycache__
 _logs
 *.pth
-paper_statistics
+paper_statist
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
