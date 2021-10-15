@@ -17,12 +17,12 @@ from pytorch_utils import move_data_to_device
 def get_arg():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--sample_rate', type=int, default=16000)
-    parser.add_argument('--window_size', type=int, default=512)
-    parser.add_argument('--hop_size', type=int, default=160)
+    parser.add_argument('--sample_rate', type=int, default=32000)
+    parser.add_argument('--window_size', type=int, default=1024)
+    parser.add_argument('--hop_size', type=int, default=320)
     parser.add_argument('--mel_bins', type=int, default=64)
     parser.add_argument('--fmin', type=int, default=50)
-    parser.add_argument('--fmax', type=int, default=8000) 
+    parser.add_argument('--fmax', type=int, default=14000) 
     parser.add_argument('--model_type', type=str, required=True)
     parser.add_argument('--checkpoint_path', type=str, required=True)
     parser.add_argument('--audio_path', type=str, required=True)
@@ -47,6 +47,7 @@ def audio_tagging(args):
     classes_num = source_config.classes_num
     labels = source_config.labels
 
+    # Model
     Model = eval(model_type)
     model = Model(sample_rate=sample_rate, window_size=window_size, 
                   hop_size=hop_size, mel_bins=mel_bins, fmin=fmin, fmax=fmax, 
@@ -65,7 +66,9 @@ def audio_tagging(args):
 
     # Load audio
     (waveform, _) = librosa.core.load(audio_path, sr=sample_rate, mono=True)
-
+    waveform = waveform[None, :]    # (1, audio_length)
+    waveform = move_data_to_device(waveform, device)
+    
     # Forward
     with torch.no_grad():
         model.eval()
