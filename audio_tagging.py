@@ -7,9 +7,12 @@ import matplotlib.pyplot as plt
 import torch
 
 from utils.utilities import create_folder, get_filename
-from pytorch.models import *
-from pytorch.pytorch_utils import move_data_to_device
 import utils.config as source_config
+
+sys.path.insert(1, os.path.join(sys.path[0], './pytorch'))
+from models import *
+from pytorch_utils import move_data_to_device
+
 
 def get_arg():
     parser = argparse.ArgumentParser()
